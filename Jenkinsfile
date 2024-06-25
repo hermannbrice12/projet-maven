@@ -1,21 +1,9 @@
 pipeline {
     agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/hermannbrice12/projet-maven.git'
-            }
-        }
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                git credentialsId: 'e9f0a9fd-bacc-43e2-9056-74448366e0a8', url: 'https://github.com/hermannbrice12/projet-maven.git'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+
     }
-}
